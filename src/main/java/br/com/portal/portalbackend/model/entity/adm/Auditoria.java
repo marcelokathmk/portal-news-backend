@@ -1,4 +1,4 @@
-package br.com.portal.portalbackend.model.entity;
+package br.com.portal.portalbackend.model.entity.adm;
 
 import java.util.Date;
 
@@ -29,4 +29,28 @@ public class Auditoria {
 	@Column(name = "dt_exclusao")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataExclusaoRegistro;
+
+	public Date getDataCriacaoRegistro() {
+		return dataCriacaoRegistro;
+	}
+
+	public void setDataCriacaoRegistro(Date dataCriacaoRegistro) {
+		this.dataCriacaoRegistro = dataCriacaoRegistro;
+	}
+
+	public Date getDataAlteracaoRegistro() {
+		return dataAlteracaoRegistro;
+	}
+
+	public void setDataAlteracaoRegistro(Date dataAlteracaoRegistro) {
+		this.dataAlteracaoRegistro = dataAlteracaoRegistro;
+	}
+
+	public Date getDataExclusaoRegistro() {
+		return dataExclusaoRegistro;
+	}
+
+	public void setDataExclusaoRegistro(Date dataExclusaoRegistro) {
+		this.dataExclusaoRegistro = dataExclusaoRegistro;
+	}
 }
