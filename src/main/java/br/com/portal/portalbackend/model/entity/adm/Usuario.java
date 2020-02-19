@@ -1,9 +1,11 @@
 package br.com.portal.portalbackend.model.entity.adm;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,13 +31,26 @@ public class Usuario extends Auditoria{
 	@Column(name = "is_ativo", nullable = false)
 	private Boolean ativo;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuario_perfil", 
 			  	joinColumns = @JoinColumn(name = "id_usuario"), 
 			  	inverseJoinColumns = @JoinColumn(name = "id_perfil")) 
 	private Set<Perfil> perfis;
 
+	public Usuario() {
+	}
+	
+	public Usuario(String usuario, String senha, Boolean ativo) {
+		super();
+		this.usuario = usuario;
+		this.senha = senha;
+		this.ativo = ativo;
+	}
+
 	public Set<Perfil> getPerfis() {
+		if	(perfis == null) {
+			this.perfis = new HashSet<Perfil>();
+		}
 		return perfis;
 	}
 
