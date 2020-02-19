@@ -31,6 +31,15 @@ public class Perfil extends Auditoria {
 				joinColumns = @JoinColumn(name = "id_perfil"),
 				inverseJoinColumns = @JoinColumn(name = "id_permissao"))
 	private Set<Permissao> permissoes;
+	
+	public Perfil() {
+	}
+
+	public Perfil(String descricao, Boolean ativo) {
+		super();
+		this.descricao = descricao;
+		this.ativo = ativo;
+	}
 
 	public Set<Permissao> getPermissoes() {
 		return permissoes;
