@@ -22,8 +22,11 @@ public class SegurancaService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = repository.findByUsuario(username);
 		if	(usuario == null) {
-			throw new EntityNotFoundException(username);
+			throw new EntityNotFoundException("Usuário "+ username + " não localizado");
+		}else if	(!usuario.getAtivo()) {
+			throw new EntityNotFoundException("Usuário "+ username + " não está ativo");
 		}
+		
 		return new UsuarioSeguranca(usuario.getId(), usuario.getUsuario(), usuario.getSenha(), usuario.getAtivo(), usuario.getPerfis());
 	}
 }
