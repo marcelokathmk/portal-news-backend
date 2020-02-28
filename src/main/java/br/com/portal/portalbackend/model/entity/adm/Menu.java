@@ -23,6 +23,9 @@ public class Menu extends Auditoria {
 	@Column(name = "ds_icone")
 	private String icone;
 	
+	@Column(name = "ds_url")
+	private String url;
+	
 	@Column(name = "is_ativo", nullable = false)
 	private Boolean ativo = true;
 	
@@ -80,5 +83,13 @@ public class Menu extends Auditoria {
 
 	public void setModulo(Modulo modulo) {
 		this.modulo = modulo;
-	}	
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
