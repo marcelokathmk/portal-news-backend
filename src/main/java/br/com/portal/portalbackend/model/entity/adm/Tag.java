@@ -20,6 +20,13 @@ public class Tag extends Auditoria{
 	
 	@Column(name = "is_ativo", nullable = false)
 	private Boolean ativo = true;
+	
+	public Tag() {
+	}
+	
+	public Tag(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public Long getId() {
 		return id;

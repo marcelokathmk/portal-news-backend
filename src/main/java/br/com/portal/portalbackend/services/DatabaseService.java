@@ -10,12 +10,14 @@ import br.com.portal.portalbackend.model.entity.adm.Categoria;
 import br.com.portal.portalbackend.model.entity.adm.Menu;
 import br.com.portal.portalbackend.model.entity.adm.Modulo;
 import br.com.portal.portalbackend.model.entity.adm.Perfil;
+import br.com.portal.portalbackend.model.entity.adm.Tag;
 import br.com.portal.portalbackend.model.entity.adm.Usuario;
 import br.com.portal.portalbackend.model.entity.adm.enums.Icones;
 import br.com.portal.portalbackend.repository.adm.CategoriaRepository;
 import br.com.portal.portalbackend.repository.adm.MenuRepository;
 import br.com.portal.portalbackend.repository.adm.ModuloRepository;
 import br.com.portal.portalbackend.repository.adm.PerfilRepository;
+import br.com.portal.portalbackend.repository.adm.TagRepository;
 import br.com.portal.portalbackend.repository.adm.UsuarioRepository;
 
 @Service
@@ -38,6 +40,9 @@ public class DatabaseService {
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	
+	@Autowired
+	private TagRepository tagRepository;
 	
 	public void instantiateDataBase() {
 		Modulo moduloAdm = new Modulo();
@@ -85,5 +90,14 @@ public class DatabaseService {
 				new Categoria("Esportes"),
 				new Categoria("Política"),
 				new Categoria("Tecnologia")));
+		
+		tagRepository.saveAll(Arrays.asList(
+				new Tag("Futebol Nacional"),
+				new Tag("Fatebol Internacional"),
+				new Tag("Política Nacional"),
+				new Tag("Política Internacional"),
+				new Tag("Preço Dollar hoje"),
+				new Tag("PS4")
+				));
 	}
 }
