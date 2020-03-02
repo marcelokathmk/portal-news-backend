@@ -21,6 +21,13 @@ public class Categoria extends Auditoria{
 	@Column(name = "is_ativo", nullable = false)
 	private Boolean ativo = true;
 
+	public Categoria() {
+	}
+	
+	public Categoria(String descricao) {
+		this.descricao = descricao;
+	}
+	
 	public Long getId() {
 		return id;
 	}

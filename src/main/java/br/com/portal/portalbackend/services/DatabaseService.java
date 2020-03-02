@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.portal.portalbackend.model.entity.adm.Categoria;
 import br.com.portal.portalbackend.model.entity.adm.Menu;
 import br.com.portal.portalbackend.model.entity.adm.Modulo;
 import br.com.portal.portalbackend.model.entity.adm.Perfil;
 import br.com.portal.portalbackend.model.entity.adm.Usuario;
 import br.com.portal.portalbackend.model.entity.adm.enums.Icones;
+import br.com.portal.portalbackend.repository.adm.CategoriaRepository;
 import br.com.portal.portalbackend.repository.adm.MenuRepository;
 import br.com.portal.portalbackend.repository.adm.ModuloRepository;
 import br.com.portal.portalbackend.repository.adm.PerfilRepository;
@@ -33,6 +35,9 @@ public class DatabaseService {
 	
 	@Autowired
 	private BCryptPasswordEncoder peEncoder;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 	
 	public void instantiateDataBase() {
 		Modulo moduloAdm = new Modulo();
@@ -74,5 +79,11 @@ public class DatabaseService {
 		usuario.getPerfis().add(perfil);
 		usuario.getPerfis().add(perfilWeb);
 		usuarioRepository.save(usuario);
+		
+		categoriaRepository.saveAll(Arrays.asList(
+				new Categoria("Economia"),
+				new Categoria("Esportes"),
+				new Categoria("Política"),
+				new Categoria("Tecnologia")));
 	}
 }

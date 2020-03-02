@@ -21,7 +21,7 @@ public class MenuHandler {
 	@Autowired
 	private MenuService service;
 	
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<List<MenuDTO>> buscarMenusUsuario(@RequestParam(name = "id_modulo") Long moduloId, @RequestParam(name = "id_perfil") List<Long> perfis){
 		List<Menu> menus = service.buscarMenusDoUsuario(moduloId, perfis);
 		if	(menus != null && !menus.isEmpty()) {
